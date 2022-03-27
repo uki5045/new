@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import {FormContainer} from "../components";
 import {Form, Button} from "react-bootstrap";
+import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 
 const Signup = () => {
+
+    const navigate = useNavigate()
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -17,9 +21,23 @@ const Signup = () => {
             alert('패스워드 맞지않음')
         }
 
-        console.log({
-            name, email, password
-        })
+        const userInput = {
+            name,
+            email,
+            password
+        }
+
+
+        try {
+            const { data, status } = await axios.post('http://localhost:8000/api/users', userInput)
+            if (status === 201) {
+                navigate("/login")
+            }
+        } catch (err) {
+            console.log(err)
+        }
+
+
     }
 
 

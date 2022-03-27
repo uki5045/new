@@ -1,18 +1,32 @@
 import React, {useState} from 'react';
 import {Form, Button} from "react-bootstrap";
 import {FormContainer} from "../components";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
-    const [email, setEmail] = useState('')
+    const navigate = useNavigate()
 
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const loginHandler = async (e) => {
         e.preventDefault()
-        console.log({
-            email, password
-        })
+
+        const userInput = {
+            email,
+            password
+        }
+
+        try {
+            const {data, status} = await axios.post('http://localhost:8000/api/users/login', userInput)
+            if (status === 200) {
+                navigate('/mypage')
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 
