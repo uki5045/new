@@ -1,21 +1,28 @@
 import React from 'react';
 import {Container, Navbar, Nav } from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 
 const Header = () => {
     return (
         <header>
             <Navbar bg={'dark'} variant={'dark'} expand={'lg'} collapseOnSelect>
                 <Container>
-                    <Navbar.Brand>New</Navbar.Brand>
+                    <LinkContainer to={'/'}>
+                        <Navbar.Brand>New</Navbar.Brand>
+                    </LinkContainer>
                     <Navbar.Toggle aria-controls={'basic-navbar-nav'} />
                     <Navbar.Collapse id={'basic-navbar-nav'}>
                         <Nav className={'ml-auto'}>
-                            <Nav.Link>
-                                Log In
-                            </Nav.Link>
-                            <Nav.Link>
-                                Sign Up
-                            </Nav.Link>
+                            <LinkContainer to={'/login'}>
+                                <Nav.Link>
+                                    Log In
+                                </Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to={'/signup'}>
+                                <Nav.Link>
+                                    Sign Up
+                                </Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
