@@ -8,13 +8,17 @@ const App = () => {
     return (
         <BrowserRouter>
             <Header />
-          <Routes>
-              <Route path={'/'} element={<Home />} />
-              <Route path={'/login'} element={<Login />} />
-              <Route path={'/mypage'} element={<Mypage />} />
-              <Route path={'/signup'} element={<Signup />} />
-              <Route path={'*'} element={<Notfound />} />
-          </Routes>
+            <main className={'py-3'}>
+                <Container>
+                  <Routes>
+                      <Route path={'/'} element={<Home />} />
+                      <Route path={'/login'} element={<Login />} />
+                      <Route path={'/mypage'} element={<Mypage />} />
+                      <Route path={'/signup'} element={<Signup />} />
+                      <Route path={'*'} element={<Notfound />} />
+                  </Routes>
+                </Container>
+            </main>
             <Footer />
         </BrowserRouter>
 
