@@ -22,6 +22,7 @@ const Login = () => {
         try {
             const {data, status} = await axios.post('http://localhost:8000/api/users/login', userInput)
             if (status === 200) {
+                await localStorage.setItem('token', data.token)
                 navigate('/mypage')
             }
         } catch (err) {
